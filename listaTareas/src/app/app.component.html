@@ -1,0 +1,22 @@
+<div>{{title}}</div>
+
+<div>{{listaTareas}}</div>
+
+<div>{{nuevaTarea.nombre}}</div>
+
+<div>
+  <input [(ngModel)]="nuevaTarea.nombre" type="text" placeholder="Añade una tarea"><button (click)="anadirTarea()">Añadir Tarea</button>
+</div>
+
+<ul>
+  <li [ngClass]="tarea.terminada? 'tachado' : ''" (click)="finalizarTarea(tarea)" *ngFor="let tarea of listaTareas">{{tarea.nombre}}</li>
+  <li *ngIf="!listaTareas || listaTareas.length===0">Aun no hay nada en la lista</li>
+</ul>
+
+<ul>
+  @for (tarea of listaTareas; track tarea.nombre){
+    <li [ngClass]="estaTerminada(tarea)" (click)="finalizarTarea(tarea)">{{tarea.nombre}}</li>
+  }@empty {
+    <li>Aun no hay nada en la lista</li>
+  }
+</ul>

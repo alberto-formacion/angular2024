@@ -1,0 +1,44 @@
+.formulario{
+  padding: 10px;
+}
+.formulario div{
+  margin-bottom: 10px;
+}
+
+.formulario label{
+  display: block;
+}
+
+.formulario .lblrb{
+  display: inline;
+}
+
+.importante{
+    font-weight: bold;
+}
+
+.contactos{
+    display: flex;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.contactos .contacto{
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.contacto .dni{
+  display: none;
+}
+
+.contacto .nombre{
+  font-size: 40px;
+}
+
+.contacto .telefono, .contacto .email{
+  display: flex;
+  justify-content: end;
+}

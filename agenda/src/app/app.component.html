@@ -1,0 +1,44 @@
+<h1>{{title}}</h1>
+<div class="formulario">
+  <div>
+    <label for="dni">DNI</label>
+    <input type="text" name="dni" id="dni" placeholder="DNI" [(ngModel)]="contactoNuevo.dni">
+  </div>
+  <div>
+    <label for="nombre">Nombre</label>
+    <input type="text" name="nombre" id="nombre" placeholder="Nombre" [(ngModel)]="contactoNuevo.nombre">
+  </div>
+  <div>
+    <label for="apellidos">Apellidos</label>
+    <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" [(ngModel)]="contactoNuevo.apellidos">
+  </div>
+  <div>
+    <label for="telefono">Telefono</label>
+    <input type="text" name="telefono" id="telefono" placeholder="Telefono" [(ngModel)]="contactoNuevo.telefono">
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input type="email" autocomplete="off" name="email" id="email" placeholder="Email" [(ngModel)]="contactoNuevo.email">
+  </div>
+
+  <div>
+    <div>Importante</div>
+    <label class="lblrb" for="importanteSi">Si</label><input type="radio" id="importanteSi" name="importante" [(ngModel)]="contactoNuevo.importante" [value]="true">
+    <label class="lblrb" for="importanteNo">No</label><input type="radio" id="importanteNo" name="importante" [(ngModel)]="contactoNuevo.importante" [value]="false">
+  </div>
+  <div>
+    <button (click)="guardarContacto()">Guardar Contacto</button>
+  </div>
+</div>
+<div class="contactos">
+  @for (contacto of contactos; track contacto.dni) {
+    <div class="contacto" [ngClass]="contacto.importante ? 'importante' : ''">
+      <div class="dni">{{contacto.dni}}</div>
+      <div class="nombre">{{contacto.nombre}} {{contacto.apellidos}}</div>
+      <div class="telefono">{{contacto.telefono}}</div>
+      <div class="email">{{contacto.email}}</div>
+    </div>
+  }@empty {
+    <div>No hay contactos aun</div>
+  }
+</div>
