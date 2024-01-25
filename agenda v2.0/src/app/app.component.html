@@ -1,0 +1,59 @@
+<h1>{{title}}</h1>
+<div>
+  <form [formGroup]="formularioContacto" (ngSubmit)="guardarContacto()">
+    <div>
+      <input type="text" name="dni" id="dni" placeholder="DNI" formControlName="dni">
+      @if (hasErrors('dni','required')) {
+        <div>El DNI es obligatorio</div>
+      }
+      @if(formularioContacto.get("dni")?.hasError("dniNoValido")){
+        <div>
+          {{this.formularioContacto.get("dni")?.getError('dniNoValido').message}}
+        </div>
+      }
+    </div>
+    <div>
+      <input type="text" name="nombre" id="nombre" placeholder="Nombre" formControlName="nombre">
+      @if(formularioContacto.get("nombre")?.hasError("nombreProhibido")){
+        <div>
+          {{this.formularioContacto.get("nombre")?.getError('nombreProhibido').message}}
+        </div>
+      }
+    </div>
+    <div>
+      <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" formControlName="apellidos">
+    </div>
+    <div>
+      <input type="text" name="telefono" id="telefono" placeholder="Telefono" formControlName="telefono">
+    </div>
+    <div>
+      <input type="email" autocomplete="off" name="email" id="email" placeholder="Email" formControlName="email">
+    </div>
+
+    <div>
+      <div>Importante</div>
+      <label for="importanteSi">Si</label><input type="radio" id="importanteSi" name="importante" formControlName="importante" [value]="true">
+      <label for="importanteNo">No</label><input type="radio" id="importanteNo" name="importante" formControlName="importante" [value]="false">
+    </div>
+    <div>
+      <button type="submit">Guardar Contacto</button>
+    </div>
+  </form>
+  <div>
+    <input type="text" name="contactoBuscar" id="contactoBuscar" placeholder="Buscar Contacto..." [(ngModel)]="contactoBuscar">
+  </div>
+</div>
+<div class="contactos">
+  @for (contacto of contactos | ordenarContacto | buscarContacto:contactoBuscar; track contacto.dni) {
+    <div class="contacto" [ngClass]="contacto.importante ? 'importante' : ''">
+      <div>{{contacto.dni | uppercase}}</div>
+      <div>{{contacto.nombre | uppercase}}</div>
+      <div>{{contacto.apellidos}}</div>
+      <div>{{contacto.telefono}}</div>
+      <div>{{contacto.email}}</div>
+      <div>{{contacto.fechaAlta | date : "dd/MM/yyyy HH:mm:ss"}}</div>
+    </div>
+  }@empty {
+    <div>No hay contactos aun</div>
+  }
+</div>
