@@ -1,0 +1,17 @@
+.peliculas{
+    display: flex;
+    justify-content: center;
+}
+
+.peliculas .pelicula{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: 10px;
+    background-color: rgba(255, 139, 234, 0.406);
+    font-weight: bold;
+    cursor: pointer;
+}

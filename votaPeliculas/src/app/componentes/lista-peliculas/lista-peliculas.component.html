@@ -1,0 +1,8 @@
+<div class="peliculas">
+    @for (pelicula of peliculas; track pelicula.id) {
+        <div (click)="detallePelicula(pelicula)" class="pelicula">
+            <div><img [src]="pelicula.imagen" height="200px" /></div>
+            <div>{{pelicula.titulo}}</div>
+        </div>
+    }
+</div>

@@ -1,0 +1,8 @@
+<div class="detallePelicula">
+    @if (pelicula) {
+        <h1>{{pelicula.titulo}} ({{pelicula.fechaEstreno | date:'dd/MM/yyyy'}})</h1>
+        <div class="sinopsis">{{pelicula.sinopsis}}</div>
+    }@else{
+        <p>Selecciona una pelicula para ver los detalles</p>
+    }
+</div>

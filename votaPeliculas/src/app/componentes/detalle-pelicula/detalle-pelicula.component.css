@@ -1,0 +1,9 @@
+.detallePelicula{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detallePelicula .sinopsis{
+    max-width: 400px;
+}
