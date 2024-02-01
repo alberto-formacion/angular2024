@@ -1,0 +1,20 @@
+@if (!usuarioLogueado) {
+  <div class="login">
+    <div>
+      <label for="usuario">Usuario</label>
+      <input type="text" name="usuario" id="usuario" [(ngModel)]="usuario.email">
+    </div>
+    <div>
+      <label for="contrasena">Contraseña</label>
+      <input type="password" name="contrasena" id="contrasena" [(ngModel)]="usuario.contrasena">
+    </div>
+    <div>
+      <button (click)="login()">Entrar</button>
+    </div>
+  </div>
+}@else {
+  <div class="usuarioLogueado">
+    <div>Hola {{usuario.nombre}} {{usuario.apellidos}}</div>
+    <div><button (click)="logout()">Salir</button></div>
+  </div>
+}

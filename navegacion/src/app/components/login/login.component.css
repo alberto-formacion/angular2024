@@ -1,0 +1,22 @@
+.login{
+  display: flex;
+  padding: 10px;
+}
+
+.login div{
+  padding: 10px;
+}
+
+.login label{
+  margin-right: 10px;
+}
+
+.usuarioLogueado{
+  display: flex;
+  padding: 10px;
+}
+
+.usuarioLogueado div{
+  padding: 10px;
+  margin-right: 20px;
+}
