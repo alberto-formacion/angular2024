@@ -1,0 +1,6 @@
+@if (equipoSeleccionado) {
+  <h1>{{equipoSeleccionado.nombre}}({{equipoSeleccionado.fundacion}})</h1>
+}
+<app-lista-equipos [equipos]="equipos" (seleccionarEquipo)="mostrarEquipoSeleccionado($event)"></app-lista-equipos>
+<app-lista-jugadores [jugadores]="equipoSeleccionado?.jugadores" (seleccionarJugador)="mostrarJugadorSeleccionado($event)"></app-lista-jugadores>
+<app-detalle-jugador [jugador]="jugadorSeleccionado"></app-detalle-jugador>

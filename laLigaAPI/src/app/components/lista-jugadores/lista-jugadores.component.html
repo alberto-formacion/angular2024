@@ -1,0 +1,5 @@
+@if (jugadores) {
+  @for (jugador of jugadores | ordenarJugadores; track jugador.id) {
+    <div (click)="seleccionar(jugador)">{{jugador.nombre}} {{jugador.apellidos}}</div>
+  }
+}

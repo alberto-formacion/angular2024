@@ -1,0 +1,7 @@
+@if (equipos) {
+  <ul>
+    @for (equipo of equipos | ordenarEquipos; track equipo.nombre) {
+      <li (click)="seleccionar(equipo)">{{equipo.nombre}}</li>
+    }
+  </ul>
+}
