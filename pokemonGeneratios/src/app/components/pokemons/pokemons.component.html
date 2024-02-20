@@ -1,0 +1,24 @@
+@if (pokemon) {
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="row g-0">
+            <div class="col-md-4">
+                <img [src]="pokemon.imagen" class="img-fluid rounded-start" alt="">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{pokemon.nombre}}</h5>
+
+                    @for (type of pokemon.types; track type.type) {
+                        <p class="card-text">{{type.type.name}}</p>
+                    }
+                    <hr>
+                    @for (move of pokemon.moves; track move.move.name) {
+                        <p class="card-text">{{move.move.name}}</p>
+                    }
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+}
