@@ -1,10 +1,25 @@
-@if (pokemons) {
-  @for (poke of pokemons; track poke.id) {
-    <div class="pokemon">
-      <app-pokemons [idPokemon]="poke.id"/>
+<header>
+  <img width="40%" src="../assets/img/International_Pokémon_logo.svg">
+</header>
+<main>
+  <div class="container">
+    @if (pokemons) {
+      <div class="row">
+        @for (poke of pokemons; track poke.id) {
+            <app-pokemons [idPokemon]="poke.id" class="col-md-4 d-flex align-items-stretch"/>
+        }
+      </div>
+    }@else{
+      no hay pokemones
+    }
+    <div class="d-flex col-md-12 justify-content-between m-3">
+      <button class="btn btn-primary" (click)="mostrarAnteriores()" [disabled]="deshabilitarAnterior">
+        Anterior
+      </button>
+
+      <button class="btn btn-primary" (click)="mostrarSiguientes()" [disabled]="deshabilitarSiguiente">
+        Siguiente
+      </button>
     </div>
-  }
-}@else{
-  no hay pokemones
-}
-<button (click)="mostrarAnteriores()" [disabled]="deshabilitarAnterior">Anterior</button><button (click)="mostrarSiguientes()" [disabled]="deshabilitarSiguiente">Siguiente</button>
+  </div>
+</main>

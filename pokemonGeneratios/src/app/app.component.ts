@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { PokemonService } from './services/pokemon.service';
 import { Pokemon } from './model/pokemon';
 import { PokemonsComponent } from './components/pokemons/pokemons.component';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +13,12 @@ import { PokemonsComponent } from './components/pokemons/pokemons.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit, OnDestroy{
   title = 'pokemonGeneratios';
   pokemons!:Array<Pokemon>;
+  pokes$!:Subscription;
   offset:number = 0;
-  limit:number = 10;
+  limit:number = 12;
   deshabilitarAnterior:boolean = true;
   deshabilitarSiguiente:boolean = true;
 
@@ -24,6 +26,10 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.obtenerPokemons();
+  }
+
+  ngOnDestroy(): void {
+      this.pokes$.unsubscribe();
   }
 
   mostrarAnteriores(){
@@ -37,7 +43,7 @@ export class AppComponent implements OnInit{
   }
 
   obtenerPokemons(){
-    this.pokemonService.getPokemons(this.offset,this.limit).subscribe({
+    this.pokes$ = this.pokemonService.getPokemons(this.offset,this.limit).subscribe({
       next: (pokemons:Array<Pokemon>)=>{
         this.pokemons = pokemons;
 

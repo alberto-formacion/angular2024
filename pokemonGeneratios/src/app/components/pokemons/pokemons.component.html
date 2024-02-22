@@ -1,24 +1,17 @@
 @if (pokemon) {
-    <div class="col-md-4">
-        <div class="card mb-3">
-            <div class="row g-0">
-            <div class="col-md-4">
-                <img [src]="pokemon.imagen" class="img-fluid rounded-start" alt="">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">{{pokemon.nombre}}</h5>
-
-                    @for (type of pokemon.types; track type.type) {
-                        <p class="card-text">{{type.type.name}}</p>
-                    }
-                    <hr>
-                    @for (move of pokemon.moves; track move.move.name) {
-                        <p class="card-text">{{move.move.name}}</p>
-                    }
-                </div>
-            </div>
-            </div>
+    <div class="pokemon col-md-12 border border-3 border-dark-subtle rounded m-3 p-3">
+        <div><img [src]="pokemon.imagen" width="140" height="140" class="bd-placeholder-img rounded-circle border border-2 border-dark" alt=""></div>
+        <h2 class="fw-normal text-capitalize">{{pokemon.nombre}}</h2>
+        <div>
+            @for (type of pokemon.types; track type.type.name) {
+                <div class="badge text-bg-secondary m-1 tipo" [ngClass]="type.type.name?type.type.name:''">{{type.type.name}}</div>
+            }
         </div>
+        <!--div>
+            @for (move of pokemon.moves; track move.move.name) {
+                <div class="badge text-bg-info m-1">{{move.move.name}}</div>
+            }
+        </div-->
+        <div class="footer"><a class="btn btn-secondary" href="#">View details »</a></div>
     </div>
 }
