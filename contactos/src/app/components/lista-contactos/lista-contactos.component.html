@@ -1,0 +1,25 @@
+@if (contactoSeleccionado) {
+  <app-detalle-contacto [contacto]="contactoSeleccionado" (vaciarContacto)="vaciarContacto($event)"></app-detalle-contacto>
+}@else {
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    @for (contacto of contacts; track contacto.id.value) {
+      <div class="col">
+        <div class="card shadow-sm">
+          <img [src]="contacto.picture.large" [alt]="contacto.name.first">
+          <div class="card-body">
+            <p class="card-text">{{contacto.name.title}} {{contacto.name.first}} {{contacto.name.last}}</p>
+            <p class="card-text">{{contacto.location.street.name}}, {{contacto.location.street.number}} ({{contacto.location.city}})</p>
+            <p class="card-text">{{contacto.phone}}</p>
+            <p class="card-text">{{contacto.cell}}</p>
+            <p class="card-text">{{contacto.email}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" (click)="mostrarDetalleContacto(contacto)" class="btn btn-sm btn-outline-secondary">Ver detalles</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+}
